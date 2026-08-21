@@ -2,7 +2,7 @@
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding Of Deki & Diana</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -10,7 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .font-script { font-family: 'Great Vibes', cursive; }
+        
+        /* Font Script dengan safety space untuk mencegah karakter terpotong */
+        .font-script { 
+            font-family: 'Great Vibes', cursive;
+            line-height: 1.4 !important;
+            padding-left: 0.15em;
+            padding-right: 0.15em;
+        }
+        
         .font-serif-title { font-family: 'Cinzel', serif; }
         
         /* Animasi Transisi Scroll */
@@ -60,7 +68,7 @@
     <!-- ========================================== -->
     <div id="cover-section" class="fixed inset-0 z-50 flex flex-col items-center justify-center text-center text-white p-4 sm:p-6 transition-all duration-1000 ease-in-out overflow-hidden">
         
-        <!-- BACKGROUND GAMBAR + VIDEO (Agar background tidak hitam polos saat video dimuat) -->
+        <!-- BACKGROUND GAMBAR + VIDEO FALLBACK -->
         <div class="absolute inset-0 -z-10 bg-[url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200')] bg-cover bg-center">
             <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-70">
                 <source src="cover-bg.mp4" type="video/mp4">
@@ -68,17 +76,17 @@
             <div class="absolute inset-0 bg-slate-950/40 backdrop-brightness-90"></div>
         </div>
 
-        <div class="gunungan-frame bg-slate-950/85 backdrop-blur-md p-6 sm:p-8 md:p-10 border-2 border-amber-400/60 glow-card max-w-sm sm:max-w-md w-full flex flex-col items-center animate-gunungan-float relative overflow-visible">
-            <div class="text-amber-300/80 text-xl mb-1">✦ ✤ ✦</div>
+        <div class="gunungan-frame bg-slate-950/85 backdrop-blur-md p-5 sm:p-8 md:p-10 border-2 border-amber-400/60 glow-card max-w-[340px] sm:max-w-md w-full flex flex-col items-center animate-gunungan-float relative overflow-visible">
+            <div class="text-amber-300/80 text-lg mb-1">✦ ✤ ✦</div>
             
             <p class="font-serif-title text-[10px] sm:text-[11px] tracking-[0.35em] uppercase text-amber-200/90 font-medium">The Wedding Of</p>
             
-            <!-- Menggunakan ukuran responsif & padding agar tulisan tidak terpotong -->
-            <div class="w-full px-2 py-1 my-1 overflow-visible">
-                <h1 class="font-script text-4xl sm:text-5xl md:text-6xl gold-shimmer drop-shadow-lg leading-relaxed whitespace-nowrap">Deki &amp; Diana</h1>
+            <!-- CONTAINER FONT script DENGAN UKURAN LEBIH PAS & PADDING LEBIH BEBAS -->
+            <div class="w-full px-2 py-2 my-1 overflow-visible text-center">
+                <h1 class="font-script text-3xl sm:text-4xl md:text-5xl gold-shimmer drop-shadow-lg inline-block whitespace-nowrap">Deki &amp; Diana</h1>
             </div>
             
-            <div class="flex items-center justify-center gap-3 my-3 w-full opacity-80">
+            <div class="flex items-center justify-center gap-3 my-2 w-full opacity-80">
                 <div class="w-12 h-[1px] bg-gradient-to-r from-transparent via-amber-300 to-transparent"></div>
                 <div class="w-2 h-2 rotate-45 border border-amber-300 bg-amber-400"></div>
                 <div class="w-12 h-[1px] bg-gradient-to-r from-transparent via-amber-300 to-transparent"></div>
@@ -86,11 +94,11 @@
 
             <p class="text-[11px] text-slate-300 italic mb-1">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
             
-            <div class="w-full bg-slate-900/80 p-3.5 rounded-2xl border border-amber-400/30 mb-5 backdrop-blur-sm shadow-inner">
+            <div class="w-full bg-slate-900/80 p-3 rounded-2xl border border-amber-400/30 mb-5 backdrop-blur-sm shadow-inner">
                 <h3 id="guest-name-preview" class="text-base font-bold text-amber-300">Tamu Undangan</h3>
             </div>
             
-            <button onclick="openInvitation()" class="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 text-slate-950 font-bold px-8 py-3 rounded-full shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:brightness-110 transition-all transform hover:scale-105 text-xs tracking-wider uppercase flex items-center gap-2">
+            <button onclick="openInvitation()" class="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 text-slate-950 font-bold px-7 py-2.5 rounded-full shadow-[0_0_20px_rgba(245,158,11,0.4)] hover:brightness-110 transition-all transform hover:scale-105 text-xs tracking-wider uppercase flex items-center gap-2">
                 ✉️ Buka Undangan
             </button>
         </div>
@@ -120,7 +128,7 @@
 
         <!-- HERO SECTION -->
         <header id="home" class="relative min-h-screen flex flex-col justify-center items-center p-5 text-center text-white overflow-hidden">
-            <div id="hero-card" class="relative gunungan-frame w-full max-w-xs p-7 bg-slate-950/80 backdrop-blur-md border-2 border-amber-400/60 glow-card shadow-2xl flex flex-col items-center space-y-4 my-auto animate-gunungan-float overflow-visible">
+            <div id="hero-card" class="relative gunungan-frame w-full max-w-xs p-6 bg-slate-950/80 backdrop-blur-md border-2 border-amber-400/60 glow-card shadow-2xl flex flex-col items-center space-y-3 my-auto animate-gunungan-float overflow-visible">
                 <div class="absolute inset-2 gunungan-frame border border-amber-300/20 pointer-events-none"></div>
 
                 <div class="flex items-center gap-2 text-amber-300/80 text-xs tracking-widest pt-1">
@@ -129,8 +137,8 @@
 
                 <p class="font-serif-title text-[10px] tracking-[0.35em] uppercase text-amber-300/90 font-medium">The Wedding Of</p>
                 
-                <div class="w-full px-1 py-1">
-                    <h2 class="font-script text-4xl sm:text-5xl gold-shimmer drop-shadow-md leading-relaxed whitespace-nowrap">Deki &amp; Diana</h2>
+                <div class="w-full px-2 py-1 overflow-visible text-center">
+                    <h2 class="font-script text-3xl sm:text-4xl gold-shimmer drop-shadow-md inline-block whitespace-nowrap">Deki &amp; Diana</h2>
                 </div>
 
                 <div class="flex items-center justify-center gap-2 w-full my-1">
@@ -182,12 +190,12 @@
                     "Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu merasa tenteram kepadanya..." (QS. Ar-Rum: 21)
                 </p>
                 <div class="space-y-1">
-                    <h3 class="font-script text-4xl text-amber-300">Deki Firmansyah, S.Pd</h3>
+                    <h3 class="font-script text-3xl sm:text-4xl text-amber-300">Deki Firmansyah, S.Pd</h3>
                     <p class="text-xs text-slate-300">Putra dari Keluarga Bpk. / Ibu</p>
                 </div>
                 <div class="font-script text-3xl text-amber-400/80">&</div>
                 <div class="space-y-1">
-                    <h3 class="font-script text-4xl text-amber-300">Diana Patmawati, S.Pd</h3>
+                    <h3 class="font-script text-3xl sm:text-4xl text-amber-300">Diana Patmawati, S.Pd</h3>
                     <p class="text-xs text-slate-300">Putri dari Keluarga Bpk. / Ibu</p>
                 </div>
             </div>
