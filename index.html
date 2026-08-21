@@ -43,16 +43,19 @@
 </head>
 <body class="bg-slate-950 text-slate-800 antialiased overflow-x-hidden">
 
-    <!-- 1. HALAMAN SAMPUL (COVER DEPAN) -->
+    <!-- ========================================== -->
+    <!-- 1. HALAMAN SAMPUL / COVER DEPAN (BERBEDA) -->
+    <!-- ========================================== -->
     <div id="cover-section" class="fixed inset-0 z-50 flex flex-col items-center justify-center text-center text-white p-6 transition-all duration-1000 ease-in-out overflow-hidden">
         
-        <!-- Video Air Terjun Latar Cover -->
+        <!-- VIDEO BACKGROUND 1: KHUSUS COVER DEPAN (Pemandangan Gunung/Awan) -->
         <div class="absolute inset-0 -z-10 overflow-hidden">
             <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-waterfall-in-forest-2213-large.mp4" type="video/mp4">
+                <!-- Ubah link di bawah jika ingin ganti video cover depan -->
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-timelapse-of-clouds-over-mountains-28434-large.mp4" type="video/mp4">
             </video>
-            <!-- Overlay gelap agar teks terbaca jelas -->
-            <div class="absolute inset-0 bg-slate-950/75"></div>
+            <!-- Overlay gelap agar teks tetap terbaca -->
+            <div class="absolute inset-0 bg-slate-950/70"></div>
         </div>
 
         <div class="bg-slate-900/60 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-amber-300/30 shadow-2xl max-w-md w-full flex flex-col items-center animate-gunungan-float">
@@ -79,15 +82,19 @@
         </div>
     </div>
 
-    <!-- 2. KONTEN UTAMA UNDANGAN -->
+
+    <!-- ========================================== -->
+    <!-- 2. KONTEN UTAMA UNDANGAN (BERBEDA) -->
+    <!-- ========================================== -->
     <div id="main-content" class="max-w-md mx-auto min-h-screen shadow-2xl relative hidden pb-24 border-x border-amber-500/20 overflow-hidden">
         
-        <!-- VIDEO AIR TERJUN BERGERAK (FIXED BACKGROUND) -->
+        <!-- VIDEO BACKGROUND 2: KHUSUS KONTEN UTAMA (Air Terjun) -->
         <div class="fixed inset-0 max-w-md mx-auto -z-20 pointer-events-none overflow-hidden">
             <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                <!-- Ubah link di bawah jika ingin ganti video isi utama -->
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-waterfall-in-forest-2213-large.mp4" type="video/mp4">
             </video>
-            <!-- Overlay Gradasi Gelap -->
+            <!-- Overlay gradasi gelap -->
             <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/85 to-slate-950/90"></div>
         </div>
 
@@ -255,6 +262,7 @@
             const cover = document.getElementById('cover-section');
             const mainContent = document.getElementById('main-content');
 
+            // Efek slide up saat tombol Buka Undangan diklik
             cover.style.transform = 'translateY(-100%)';
             
             setTimeout(() => {
@@ -274,7 +282,7 @@
         function toggleMusic() {
             if (isPlaying) {
                 music.pause();
-                musicBtn.innerText = '🔇';
+                musicBtn.innerText = '0x1F507';
                 isPlaying = false;
             } else {
                 music.play();
