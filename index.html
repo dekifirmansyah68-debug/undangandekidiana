@@ -16,17 +16,7 @@
         .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .fade-up.active { opacity: 1; transform: translateY(0); }
 
-        /* 1. ANIMASI PERGERAKAN PEMANDANGAN (KEN BURNS EFFECT) */
-        @keyframes kenBurnsScenery {
-            0% { transform: scale(1) translate(0, 0); }
-            50% { transform: scale(1.12) translate(-15px, -10px); }
-            100% { transform: scale(1) translate(0, 0); }
-        }
-        .animate-bg-move {
-            animation: kenBurnsScenery 25s ease-in-out infinite alternate;
-        }
-
-        /* 2. ANIMASI MELAYANG PADA BINGKAI GUNUNGAN */
+        /* ANIMASI MELAYANG PADA BINGKAI GUNUNGAN */
         @keyframes gununganFloat {
             0%, 100% { transform: translateY(0px) scale(1); }
             50% { transform: translateY(-8px) scale(1.01); }
@@ -35,7 +25,7 @@
             animation: gununganFloat 6s ease-in-out infinite;
         }
 
-        /* 3. ANIMASI KUPU-KUPU / ORNAMEN MELAYANG */
+        /* ANIMASI ORNAMEN MELAYANG */
         @keyframes floatSlow {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-12px) rotate(5deg); }
@@ -56,9 +46,13 @@
     <!-- 1. HALAMAN SAMPUL (COVER DEPAN) -->
     <div id="cover-section" class="fixed inset-0 z-50 flex flex-col items-center justify-center text-center text-white p-6 transition-all duration-1000 ease-in-out overflow-hidden">
         
-        <!-- Background Bergerak untuk Cover -->
-        <div class="absolute inset-0 bg-cover bg-center animate-bg-move -z-10" 
-             style="background-image: linear-gradient(rgba(10, 25, 47, 0.82), rgba(10, 25, 47, 0.88)), url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&q=80&w=1200');">
+        <!-- Video Air Terjun Latar Cover -->
+        <div class="absolute inset-0 -z-10 overflow-hidden">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-waterfall-in-forest-2213-large.mp4" type="video/mp4">
+            </video>
+            <!-- Overlay gelap agar teks terbaca jelas -->
+            <div class="absolute inset-0 bg-slate-950/75"></div>
         </div>
 
         <div class="bg-slate-900/60 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-amber-300/30 shadow-2xl max-w-md w-full flex flex-col items-center animate-gunungan-float">
@@ -88,9 +82,13 @@
     <!-- 2. KONTEN UTAMA UNDANGAN -->
     <div id="main-content" class="max-w-md mx-auto min-h-screen shadow-2xl relative hidden pb-24 border-x border-amber-500/20 overflow-hidden">
         
-        <!-- BACKGROUND PEMANDANGAN BERGERAK KESELURUHAN (FIXED ANIMATED SCENERY) -->
-        <div class="fixed inset-0 max-w-md mx-auto bg-cover bg-center animate-bg-move -z-20 pointer-events-none" 
-             style="background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.90)), url('https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&q=80&w=1000');">
+        <!-- VIDEO AIR TERJUN BERGERAK (FIXED BACKGROUND) -->
+        <div class="fixed inset-0 max-w-md mx-auto -z-20 pointer-events-none overflow-hidden">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-waterfall-in-forest-2213-large.mp4" type="video/mp4">
+            </video>
+            <!-- Overlay Gradasi Gelap -->
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/85 to-slate-950/90"></div>
         </div>
 
         <!-- Musik Latar -->
@@ -103,16 +101,13 @@
             🎵
         </button>
 
-        <!-- HERO SECTION: BINGKAI GUNUNGAN BERGERAK -->
+        <!-- HERO SECTION -->
         <header id="home" class="relative min-h-screen flex flex-col justify-center items-center p-6 text-center text-white overflow-hidden">
             
-            <!-- Ornamen Kupu-kupu Bergerak -->
             <div class="absolute top-16 left-6 text-2xl opacity-80 animate-float">🦋</div>
             <div class="absolute top-28 right-8 text-xl opacity-80 animate-float" style="animation-delay: 2s;">🦋</div>
 
-            <!-- Kartu Gunungan dengan Efek Melayang Lambat -->
             <div id="hero-card" class="relative gunungan-frame w-full max-w-xs p-8 bg-slate-900/60 backdrop-blur-md border-2 border-amber-300/50 shadow-2xl flex flex-col items-center space-y-4 my-auto animate-gunungan-float">
-                
                 <div class="w-8 h-8 rounded-full border border-amber-300/60 flex items-center justify-center text-amber-300 text-xs mb-1">
                     ✨
                 </div>
@@ -138,7 +133,7 @@
             </div>
         </header>
 
-        <!-- SEC 3: MEMPELAI -->
+        <!-- MEMPELAI -->
         <section id="couple" class="py-14 px-6 text-center space-y-8 fade-up">
             <div class="bg-slate-900/70 backdrop-blur-md p-6 rounded-3xl border border-amber-300/30 shadow-xl space-y-6">
                 <p class="text-xs text-slate-300 italic max-w-xs mx-auto leading-relaxed">
@@ -156,12 +151,11 @@
             </div>
         </section>
 
-        <!-- SEC 4: RANGKAIAN ACARA -->
+        <!-- RANGKAIAN ACARA -->
         <section id="event" class="py-14 px-6 space-y-6 text-center fade-up">
             <h2 class="font-script text-4xl text-amber-200 drop-shadow">Rangkaian Acara</h2>
             
             <div class="space-y-4">
-                <!-- Kartu Akad Nikah -->
                 <div class="bg-slate-900/70 backdrop-blur-md border border-amber-300/30 p-5 rounded-2xl shadow-xl space-y-2">
                     <div class="w-8 h-8 mx-auto rounded-full bg-amber-400/10 border border-amber-300/40 flex items-center justify-center text-amber-300 text-xs">
                         💍
@@ -172,7 +166,6 @@
                     <p class="text-xs text-slate-300 pt-1">Gedung / Lokasi Akad</p>
                 </div>
 
-                <!-- Kartu Resepsi Pernikahan -->
                 <div class="bg-slate-900/70 backdrop-blur-md border border-amber-300/30 p-5 rounded-2xl shadow-xl space-y-2">
                     <div class="w-8 h-8 mx-auto rounded-full bg-amber-400/10 border border-amber-300/40 flex items-center justify-center text-amber-300 text-xs">
                         ✨
@@ -184,7 +177,6 @@
                 </div>
             </div>
 
-            <!-- Google Maps Frame -->
             <div class="w-full h-56 rounded-2xl overflow-hidden shadow-2xl border border-amber-300/30">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7984!2d107.61!3d-6.9147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTQnNTIuOSJTIDEwN8KwMzYnMzYuMCJF!5e0!3m2!1sid!2sid!4v1!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
@@ -194,7 +186,7 @@
             </a>
         </section>
 
-        <!-- SEC 5: AMPLOP DIGITAL -->
+        <!-- AMPLOP DIGITAL -->
         <section class="py-14 px-6 text-center space-y-6 fade-up">
             <h3 class="font-script text-4xl text-amber-200 drop-shadow">Amplop Digital</h3>
             
@@ -211,7 +203,7 @@
             </div>
         </section>
 
-        <!-- SEC 6: BUKU TAMU -->
+        <!-- BUKU TAMU -->
         <section id="wishes" class="py-14 px-6 space-y-6 fade-up">
             <h3 class="font-script text-4xl text-center text-amber-200 drop-shadow">Buku Tamu & Ucapan</h3>
             
@@ -247,7 +239,6 @@
 
     </div>
 
-    <!-- SCRIPT LOGIKA TRANSIKSI & MUSIK -->
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const recipient = urlParams.get('to');
