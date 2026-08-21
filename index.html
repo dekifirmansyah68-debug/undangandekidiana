@@ -17,19 +17,19 @@
 </head>
 <body class="bg-stone-900 text-stone-800 antialiased overflow-x-hidden">
 
-    <!-- HALAMAN SAMPUL (COVER) - DIBERSIHKAN DARI FOTO, JAM & LOKASI -->
+    <!-- HALAMAN SAMPUL (COVER) -->
     <div id="cover-section" class="fixed inset-0 z-50 flex flex-col items-center justify-center text-center text-white p-6 transition-all duration-1000" 
          style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=1200'); background-size: cover; background-position: center;">
         
-        <div class="bg-stone-900/50 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-white/20 shadow-2xl max-w-md w-full flex flex-col items-center">
+        <div class="bg-stone-900/60 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-white/20 shadow-2xl max-w-md w-full flex flex-col items-center">
             <p class="text-xs tracking-[0.4em] uppercase mb-2 text-amber-200/80">The Wedding Of</p>
             <h1 class="font-script text-5xl md:text-6xl text-amber-100 mb-1">Deki & Diana</h1>
             
-            <!-- Ornamen Bunga Line Art Emas -->
-            <div class="my-4 text-amber-300">
-                <svg class="w-12 h-12 mx-auto opacity-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-                    <path d="M12 2C12 2 13 6 15 8C17 10 21 11 21 11C21 11 17 12 15 14C13 16 12 20 12 20C12 20 11 16 9 14C7 12 3 11 3 11C3 11 7 10 9 8C11 6 12 2 12 2Z" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <!-- Ornamen Pembatas Garis Emas Minimalis -->
+            <div class="flex items-center justify-center gap-3 my-5 w-full">
+                <div class="w-12 h-[1px] bg-amber-300/40"></div>
+                <div class="w-2 h-2 rotate-45 border border-amber-300/80 bg-amber-300/20"></div>
+                <div class="w-12 h-[1px] bg-amber-300/40"></div>
             </div>
 
             <p class="text-xs text-stone-300 italic mb-1">Kami mengundang Anda,</p>
@@ -177,7 +177,6 @@
 
     <!-- Script Logika -->
     <script>
-        // Tangkap nama tamu dari URL (Contoh: namasitus.com/?to=NamaTamu)
         const urlParams = new URLSearchParams(window.location.search);
         const recipient = urlParams.get('to');
         if (recipient) {
@@ -228,7 +227,6 @@
             setTimeout(() => { btn.innerText = originalText; }, 2000);
         }
 
-        // Countdown Timer ke 06 September 2026
         const targetDate = new Date("Sep 06, 2026 08:00:00").getTime();
         setInterval(() => {
             const now = new Date().getTime();
