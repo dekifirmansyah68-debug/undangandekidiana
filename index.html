@@ -12,23 +12,37 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .font-script { font-family: 'Great Vibes', cursive; }
         
-        /* Animasi Transisi & Keyframes */
+        /* Animasi Transisi Scroll */
         .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .fade-up.active { opacity: 1; transform: translateY(0); }
 
-        @keyframes zoomInSoft {
-            0% { transform: scale(0.92); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        /* 1. ANIMASI PERGERAKAN PEMANDANGAN (KEN BURNS EFFECT) */
+        @keyframes kenBurnsScenery {
+            0% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.12) translate(-15px, -10px); }
+            100% { transform: scale(1) translate(0, 0); }
         }
-        .animate-zoom-in { animation: zoomInSoft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+        .animate-bg-move {
+            animation: kenBurnsScenery 25s ease-in-out infinite alternate;
+        }
 
+        /* 2. ANIMASI MELAYANG PADA BINGKAI GUNUNGAN */
+        @keyframes gununganFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-8px) scale(1.01); }
+        }
+        .animate-gunungan-float {
+            animation: gununganFloat 6s ease-in-out infinite;
+        }
+
+        /* 3. ANIMASI KUPU-KUPU / ORNAMEN MELAYANG */
         @keyframes floatSlow {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(3deg); }
+            50% { transform: translateY(-12px) rotate(5deg); }
         }
         .animate-float { animation: floatSlow 4s ease-in-out infinite; }
 
-        /* Shape Arch / Gunungan Frame CSS */
+        /* Shape Arch / Gunungan Frame */
         .gunungan-frame {
             border-top-left-radius: 50% 40%;
             border-top-right-radius: 50% 40%;
@@ -40,14 +54,17 @@
 <body class="bg-slate-950 text-slate-800 antialiased overflow-x-hidden">
 
     <!-- 1. HALAMAN SAMPUL (COVER DEPAN) -->
-    <div id="cover-section" class="fixed inset-0 z-50 flex flex-col items-center justify-center text-center text-white p-6 transition-all duration-1000 ease-in-out" 
-         style="background: linear-gradient(rgba(10, 25, 47, 0.82), rgba(10, 25, 47, 0.88)), url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&q=80&w=1200'); background-size: cover; background-position: center;">
+    <div id="cover-section" class="fixed inset-0 z-50 flex flex-col items-center justify-center text-center text-white p-6 transition-all duration-1000 ease-in-out overflow-hidden">
         
-        <div class="bg-slate-900/60 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-amber-300/30 shadow-2xl max-w-md w-full flex flex-col items-center animate-zoom-in">
+        <!-- Background Bergerak untuk Cover -->
+        <div class="absolute inset-0 bg-cover bg-center animate-bg-move -z-10" 
+             style="background-image: linear-gradient(rgba(10, 25, 47, 0.82), rgba(10, 25, 47, 0.88)), url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&q=80&w=1200');">
+        </div>
+
+        <div class="bg-slate-900/60 backdrop-blur-md p-8 md:p-10 rounded-3xl border border-amber-300/30 shadow-2xl max-w-md w-full flex flex-col items-center animate-gunungan-float">
             <p class="text-xs tracking-[0.4em] uppercase mb-2 text-amber-200/90 font-medium">The Wedding Of</p>
             <h1 class="font-script text-5xl md:text-6xl text-amber-200 mb-1 drop-shadow">Deki & Diana</h1>
             
-            <!-- Ornamen Pembatas Garis Emas Klasik -->
             <div class="flex items-center justify-center gap-3 my-5 w-full">
                 <div class="w-12 h-[1px] bg-amber-300/40"></div>
                 <div class="w-2.5 h-2.5 rotate-45 border border-amber-300/80 bg-amber-300/20"></div>
@@ -69,8 +86,13 @@
     </div>
 
     <!-- 2. KONTEN UTAMA UNDANGAN -->
-    <div id="main-content" class="max-w-md mx-auto bg-slate-900 min-h-screen shadow-2xl relative hidden pb-24 border-x border-amber-500/20">
+    <div id="main-content" class="max-w-md mx-auto min-h-screen shadow-2xl relative hidden pb-24 border-x border-amber-500/20 overflow-hidden">
         
+        <!-- BACKGROUND PEMANDANGAN BERGERAK KESELURUHAN (FIXED ANIMATED SCENERY) -->
+        <div class="fixed inset-0 max-w-md mx-auto bg-cover bg-center animate-bg-move -z-20 pointer-events-none" 
+             style="background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.90)), url('https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&q=80&w=1000');">
+        </div>
+
         <!-- Musik Latar -->
         <audio id="bg-music" loop>
             <source src="https://www.bensound.com/bensound-music/bensound-tender.mp3" type="audio/mpeg">
@@ -81,14 +103,15 @@
             🎵
         </button>
 
-        <!-- HERO SECTION: BINGKAI GUNUNGAN -->
-        <header id="home" class="relative min-h-screen flex flex-col justify-center items-center p-6 text-center text-white bg-cover bg-center overflow-hidden" 
-                style="background-image: linear-gradient(to bottom, rgba(15,23,42,0.7), rgba(15,23,42,0.9)), url('https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&q=80&w=1000');">
+        <!-- HERO SECTION: BINGKAI GUNUNGAN BERGERAK -->
+        <header id="home" class="relative min-h-screen flex flex-col justify-center items-center p-6 text-center text-white overflow-hidden">
             
-            <div class="absolute top-12 left-6 text-2xl opacity-75 animate-float">🦋</div>
-            <div class="absolute top-24 right-8 text-xl opacity-75 animate-float" style="animation-delay: 1.5s;">🦋</div>
+            <!-- Ornamen Kupu-kupu Bergerak -->
+            <div class="absolute top-16 left-6 text-2xl opacity-80 animate-float">🦋</div>
+            <div class="absolute top-28 right-8 text-xl opacity-80 animate-float" style="animation-delay: 2s;">🦋</div>
 
-            <div id="hero-card" class="relative gunungan-frame w-full max-w-xs p-8 bg-slate-900/60 backdrop-blur-md border-2 border-amber-300/50 shadow-2xl flex flex-col items-center space-y-4 my-auto opacity-0 transform transition-all duration-1000">
+            <!-- Kartu Gunungan dengan Efek Melayang Lambat -->
+            <div id="hero-card" class="relative gunungan-frame w-full max-w-xs p-8 bg-slate-900/60 backdrop-blur-md border-2 border-amber-300/50 shadow-2xl flex flex-col items-center space-y-4 my-auto animate-gunungan-float">
                 
                 <div class="w-8 h-8 rounded-full border border-amber-300/60 flex items-center justify-center text-amber-300 text-xs mb-1">
                     ✨
@@ -116,96 +139,102 @@
         </header>
 
         <!-- SEC 3: MEMPELAI -->
-        <section id="couple" class="py-14 px-6 text-center space-y-8 bg-slate-800 text-slate-200 fade-up">
-            <p class="text-xs text-slate-400 italic max-w-xs mx-auto leading-relaxed">
-                "Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu merasa tenteram kepadanya..." (QS. Ar-Rum: 21)
-            </p>
-            <div class="space-y-1">
-                <h3 class="font-script text-3xl text-amber-300">Deki Firmansyah, S.Pd</h3>
-                <p class="text-xs text-slate-400">Putra dari Keluarga Bpk. / Ibu</p>
-            </div>
-            <div class="font-script text-2xl text-amber-400/60">&</div>
-            <div class="space-y-1">
-                <h3 class="font-script text-3xl text-amber-300">Diana Patmawati, S.Pd</h3>
-                <p class="text-xs text-slate-400">Putri dari Keluarga Bpk. / Ibu</p>
+        <section id="couple" class="py-14 px-6 text-center space-y-8 fade-up">
+            <div class="bg-slate-900/70 backdrop-blur-md p-6 rounded-3xl border border-amber-300/30 shadow-xl space-y-6">
+                <p class="text-xs text-slate-300 italic max-w-xs mx-auto leading-relaxed">
+                    "Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu merasa tenteram kepadanya..." (QS. Ar-Rum: 21)
+                </p>
+                <div class="space-y-1">
+                    <h3 class="font-script text-3xl text-amber-300">Deki Firmansyah, S.Pd</h3>
+                    <p class="text-xs text-slate-300">Putra dari Keluarga Bpk. / Ibu</p>
+                </div>
+                <div class="font-script text-2xl text-amber-400/80">&</div>
+                <div class="space-y-1">
+                    <h3 class="font-script text-3xl text-amber-300">Diana Patmawati, S.Pd</h3>
+                    <p class="text-xs text-slate-300">Putri dari Keluarga Bpk. / Ibu</p>
+                </div>
             </div>
         </section>
 
-        <!-- SEC 4: RANGKAIAN ACARA (AKAD & RESEPSI TERPISAH) -->
-        <section id="event" class="py-14 px-6 space-y-6 bg-slate-900 text-center fade-up">
-            <h2 class="font-script text-4xl text-amber-200">Rangkaian Acara</h2>
+        <!-- SEC 4: RANGKAIAN ACARA -->
+        <section id="event" class="py-14 px-6 space-y-6 text-center fade-up">
+            <h2 class="font-script text-4xl text-amber-200 drop-shadow">Rangkaian Acara</h2>
             
             <div class="space-y-4">
                 <!-- Kartu Akad Nikah -->
-                <div class="bg-slate-800/80 border border-amber-300/20 p-5 rounded-2xl shadow-lg space-y-2">
-                    <div class="w-8 h-8 mx-auto rounded-full bg-amber-400/10 border border-amber-300/30 flex items-center justify-center text-amber-300 text-xs">
+                <div class="bg-slate-900/70 backdrop-blur-md border border-amber-300/30 p-5 rounded-2xl shadow-xl space-y-2">
+                    <div class="w-8 h-8 mx-auto rounded-full bg-amber-400/10 border border-amber-300/40 flex items-center justify-center text-amber-300 text-xs">
                         💍
                     </div>
                     <h4 class="font-bold text-amber-300 tracking-wide text-xs uppercase">Akad Nikah</h4>
-                    <p class="text-xs text-slate-300">Minggu, 06 September 2026</p>
+                    <p class="text-xs text-slate-200">Minggu, 06 September 2026</p>
                     <p class="text-xs text-amber-200 font-semibold">Pukul 08.00 - 10.00 WIB</p>
-                    <p class="text-xs text-slate-400 pt-1">Gedung / Lokasi Akad</p>
+                    <p class="text-xs text-slate-300 pt-1">Gedung / Lokasi Akad</p>
                 </div>
 
                 <!-- Kartu Resepsi Pernikahan -->
-                <div class="bg-slate-800/80 border border-amber-300/20 p-5 rounded-2xl shadow-lg space-y-2">
-                    <div class="w-8 h-8 mx-auto rounded-full bg-amber-400/10 border border-amber-300/30 flex items-center justify-center text-amber-300 text-xs">
+                <div class="bg-slate-900/70 backdrop-blur-md border border-amber-300/30 p-5 rounded-2xl shadow-xl space-y-2">
+                    <div class="w-8 h-8 mx-auto rounded-full bg-amber-400/10 border border-amber-300/40 flex items-center justify-center text-amber-300 text-xs">
                         ✨
                     </div>
                     <h4 class="font-bold text-amber-300 tracking-wide text-xs uppercase">Resepsi Pernikahan</h4>
-                    <p class="text-xs text-slate-300">Minggu, 06 September 2026</p>
+                    <p class="text-xs text-slate-200">Minggu, 06 September 2026</p>
                     <p class="text-xs text-amber-200 font-semibold">Pukul 11.00 WIB - Selesai</p>
-                    <p class="text-xs text-slate-400 pt-1">Gedung / Lokasi Resepsi</p>
+                    <p class="text-xs text-slate-300 pt-1">Gedung / Lokasi Resepsi</p>
                 </div>
             </div>
 
             <!-- Google Maps Frame -->
-            <div class="w-full h-56 rounded-2xl overflow-hidden shadow-lg border border-amber-300/20">
+            <div class="w-full h-56 rounded-2xl overflow-hidden shadow-2xl border border-amber-300/30">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7984!2d107.61!3d-6.9147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTQnNTIuOSJTIDEwN8KwMzYnMzYuMCJF!5e0!3m2!1sid!2sid!4v1!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
 
-            <a href="https://wa.me/6281234567890?text=Halo,%20saya%20akan%20hadir%20di%20acara%20pernikahan%20Deki%20%26%20Diana." target="_blank" class="block w-full bg-emerald-600 text-white font-semibold py-3 rounded-xl shadow hover:bg-emerald-700 transition text-xs">
+            <a href="https://wa.me/6281234567890?text=Halo,%20saya%20akan%20hadir%20di%20acara%20pernikahan%20Deki%20%26%20Diana." target="_blank" class="block w-full bg-emerald-600/90 hover:bg-emerald-600 text-white font-semibold py-3 rounded-xl shadow-lg transition text-xs border border-emerald-400/30">
                 ✅ Konfirmasi Kehadiran (RSVP WhatsApp)
             </a>
         </section>
 
         <!-- SEC 5: AMPLOP DIGITAL -->
-        <section class="py-14 px-6 bg-slate-800 text-center space-y-6 fade-up">
-            <h3 class="font-script text-4xl text-amber-200">Amplop Digital</h3>
-            <p class="text-xs text-slate-400">Doa restu Anda adalah karunia terindah bagi kami. Namun jika ingin memberikan tanda kasih, dapat melalui:</p>
+        <section class="py-14 px-6 text-center space-y-6 fade-up">
+            <h3 class="font-script text-4xl text-amber-200 drop-shadow">Amplop Digital</h3>
             
-            <div class="bg-slate-900 p-5 rounded-2xl border border-amber-300/20 text-left space-y-2">
-                <p class="text-xs font-bold text-amber-300">BCA - Bank Central Asia</p>
-                <p class="text-sm font-mono font-semibold text-white" id="rek-bca">1234567890</p>
-                <p class="text-[11px] text-slate-400">a.n. Deki Firmansyah</p>
-                <button onclick="copyRek('rek-bca', this)" class="mt-2 w-full bg-amber-400/20 text-amber-200 border border-amber-300/30 py-2 rounded-lg text-xs font-semibold hover:bg-amber-400/30 transition">
-                    📋 Salin Nomor Rekening
-                </button>
+            <div class="bg-slate-900/70 backdrop-blur-md p-6 rounded-2xl border border-amber-300/30 text-left space-y-3 shadow-xl">
+                <p class="text-xs text-slate-300 leading-relaxed">Doa restu Anda adalah karunia terindah bagi kami. Namun jika ingin memberikan tanda kasih, dapat melalui:</p>
+                <div class="border-t border-amber-300/20 pt-3">
+                    <p class="text-xs font-bold text-amber-300">BCA - Bank Central Asia</p>
+                    <p class="text-base font-mono font-semibold text-white tracking-wider my-1" id="rek-bca">1234567890</p>
+                    <p class="text-[11px] text-slate-300">a.n. Deki Firmansyah</p>
+                    <button onclick="copyRek('rek-bca', this)" class="mt-3 w-full bg-amber-400/20 text-amber-200 border border-amber-300/40 py-2.5 rounded-lg text-xs font-semibold hover:bg-amber-400/30 transition">
+                        📋 Salin Nomor Rekening
+                    </button>
+                </div>
             </div>
         </section>
 
         <!-- SEC 6: BUKU TAMU -->
-        <section id="wishes" class="py-14 px-6 bg-slate-900 space-y-6 fade-up">
-            <h3 class="font-script text-4xl text-center text-amber-200">Buku Tamu & Ucapan</h3>
+        <section id="wishes" class="py-14 px-6 space-y-6 fade-up">
+            <h3 class="font-script text-4xl text-center text-amber-200 drop-shadow">Buku Tamu & Ucapan</h3>
             
-            <div class="space-y-3">
-                <input type="text" id="guest-name" placeholder="Nama Anda" class="w-full px-4 py-2.5 border border-slate-700 rounded-xl text-xs focus:outline-none focus:border-amber-400 bg-slate-800 text-white">
-                <textarea id="guest-message" rows="3" placeholder="Tulis ucapan & doa restu..." class="w-full px-4 py-2.5 border border-slate-700 rounded-xl text-xs focus:outline-none focus:border-amber-400 bg-slate-800 text-white"></textarea>
-                <button onclick="addComment()" class="w-full bg-gradient-to-r from-amber-300 to-amber-500 text-slate-950 font-bold py-2.5 rounded-xl text-xs hover:opacity-90 transition shadow">Kirim Ucapan</button>
-            </div>
+            <div class="bg-slate-900/70 backdrop-blur-md p-6 rounded-2xl border border-amber-300/30 shadow-xl space-y-4">
+                <div class="space-y-3">
+                    <input type="text" id="guest-name" placeholder="Nama Anda" class="w-full px-4 py-2.5 border border-slate-700/80 rounded-xl text-xs focus:outline-none focus:border-amber-400 bg-slate-800/80 text-white placeholder-slate-400">
+                    <textarea id="guest-message" rows="3" placeholder="Tulis ucapan & doa restu..." class="w-full px-4 py-2.5 border border-slate-700/80 rounded-xl text-xs focus:outline-none focus:border-amber-400 bg-slate-800/80 text-white placeholder-slate-400"></textarea>
+                    <button onclick="addComment()" class="w-full bg-gradient-to-r from-amber-300 to-amber-500 text-slate-950 font-bold py-2.5 rounded-xl text-xs hover:opacity-90 transition shadow-lg">Kirim Ucapan</button>
+                </div>
 
-            <div id="comment-list" class="space-y-3 max-h-60 overflow-y-auto pr-1">
-                <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 text-xs space-y-1 shadow-sm">
-                    <p class="font-bold text-amber-300">Keluarga Besar</p>
-                    <p class="text-slate-300">Selamat menempuh hidup baru Deki & Diana! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah.</p>
+                <div id="comment-list" class="space-y-3 max-h-60 overflow-y-auto pr-1 pt-2">
+                    <div class="bg-slate-800/90 p-3 rounded-xl border border-slate-700/60 text-xs space-y-1 shadow-sm">
+                        <p class="font-bold text-amber-300">Keluarga Besar</p>
+                        <p class="text-slate-200">Selamat menempuh hidup baru Deki & Diana! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- FOOTER -->
-        <footer class="py-8 px-6 text-center bg-slate-950 text-slate-400 text-xs space-y-2">
-            <p class="font-script text-2xl text-amber-200">Terima Kasih</p>
-            <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami.</p>
+        <footer class="py-8 px-6 text-center text-slate-300 text-xs space-y-2">
+            <p class="font-script text-3xl text-amber-200 drop-shadow">Terima Kasih</p>
+            <p class="opacity-80">Merupakan suatu kehormatan dan kebahagiaan bagi kami.</p>
         </footer>
 
         <!-- BOTTOM NAV BAR -->
@@ -234,7 +263,6 @@
         function openInvitation() {
             const cover = document.getElementById('cover-section');
             const mainContent = document.getElementById('main-content');
-            const heroCard = document.getElementById('hero-card');
 
             cover.style.transform = 'translateY(-100%)';
             
@@ -243,11 +271,6 @@
                 mainContent.classList.remove('hidden');
                 musicBtn.classList.remove('hidden');
                 window.scrollTo(0, 0);
-
-                setTimeout(() => {
-                    heroCard.classList.remove('opacity-0');
-                    heroCard.classList.add('animate-zoom-in');
-                }, 100);
             }, 600);
 
             music.play().then(() => {
@@ -288,8 +311,8 @@
             }
 
             const newComment = document.createElement('div');
-            newComment.className = "bg-slate-800 p-3 rounded-xl border border-slate-700 text-xs space-y-1 shadow-sm";
-            newComment.innerHTML = `<p class="font-bold text-amber-300">${nameInput.value}</p><p class="text-slate-300">${messageInput.value}</p>`;
+            newComment.className = "bg-slate-800/90 p-3 rounded-xl border border-slate-700/60 text-xs space-y-1 shadow-sm";
+            newComment.innerHTML = `<p class="font-bold text-amber-300">${nameInput.value}</p><p class="text-slate-200">${messageInput.value}</p>`;
             
             commentList.prepend(newComment);
             nameInput.value = "";
