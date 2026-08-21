@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan - Romeo & Juliet</title>
+    <title>The Wedding Of Romeo & Juliet</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .font-script { font-family: 'Great Vibes', cursive; }
+        /* Animasi halus */
+        .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-up.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="bg-stone-900 text-stone-800 antialiased overflow-x-hidden">
@@ -18,20 +23,20 @@
         <div class="max-w-md w-full space-y-6">
             <p class="text-xs tracking-[0.3em] uppercase text-stone-400">The Wedding Of</p>
             <h1 class="font-script text-6xl text-amber-200">Romeo & Juliet</h1>
-            <p class="text-sm text-stone-300">Kepada Yth. Bapak/Ibu/Saudara/i,</p>
-            <div class="bg-stone-800 py-2 px-4 rounded-full inline-block text-sm font-medium text-amber-100 border border-stone-700">
-                Tamu Undangan
+            <div class="space-y-1">
+                <p class="text-xs text-stone-400">Kepada Yth. Bapak/Ibu/Saudara/i,</p>
+                <h3 id="guest-name-preview" class="text-lg font-semibold text-amber-100">Tamu Undangan</h3>
             </div>
             <div class="pt-4">
                 <button onclick="openInvitation()" class="bg-amber-100 text-stone-900 font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-amber-200 transition-all transform hover:scale-105">
-                    Buka Undangan
+                    📖 Buka Undangan
                 </button>
             </div>
         </div>
     </div>
 
     <!-- KONTEN UTAMA UNDANGAN -->
-    <div id="main-content" class="max-w-md mx-auto bg-stone-100 min-h-screen shadow-2xl relative hidden">
+    <div id="main-content" class="max-w-md mx-auto bg-stone-100 min-h-screen shadow-2xl relative hidden pb-20">
         
         <!-- Musik Latar -->
         <audio id="bg-music" loop>
@@ -39,13 +44,13 @@
         </audio>
 
         <!-- Tombol Musik Melayang -->
-        <button id="music-btn" onclick="toggleMusic()" class="fixed bottom-6 right-6 z-40 bg-stone-900/80 backdrop-blur text-amber-200 p-3 rounded-full shadow-lg border border-stone-700 hover:scale-110 transition hidden">
+        <button id="music-btn" onclick="toggleMusic()" class="fixed top-6 right-6 z-40 bg-stone-900/80 backdrop-blur text-amber-200 p-2.5 rounded-full shadow-lg border border-stone-700 hover:scale-110 transition hidden">
             🎵
         </button>
 
         <!-- Hero Section -->
-        <header class="relative h-screen flex flex-col justify-end p-6 text-center text-white bg-cover bg-center" style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800');">
-            <div class="space-y-4 mb-8">
+        <header id="home" class="relative h-screen flex flex-col justify-end p-6 text-center text-white bg-cover bg-center" style="background-image: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800');">
+            <div class="space-y-4 mb-8 fade-up">
                 <p class="text-xs tracking-[0.2em] uppercase text-amber-300 font-medium">The Wedding Of</p>
                 <h2 class="font-script text-5xl text-amber-100">Romeo & Juliet</h2>
                 <p class="text-sm text-stone-200">Minggu, 12 Desember 2026</p>
@@ -72,7 +77,10 @@
         </section>
 
         <!-- Mempelai -->
-        <section class="py-12 px-6 text-center space-y-10 bg-white">
+        <section id="couple" class="py-14 px-6 text-center space-y-10 bg-white fade-up">
+            <p class="text-xs text-stone-500 italic max-w-xs mx-auto">
+                "Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri..." (QS. Ar-Rum: 21)
+            </p>
             <div class="space-y-2">
                 <h3 class="font-script text-4xl text-amber-700">Romeo Pratama</h3>
                 <p class="text-xs text-stone-500">Putra dari Bpk. Budi & Ibu Siti</p>
@@ -85,7 +93,7 @@
         </section>
 
         <!-- Detail Acara & Maps -->
-        <section class="py-12 px-6 space-y-6 bg-stone-200 text-center">
+        <section id="event" class="py-14 px-6 space-y-6 bg-stone-200 text-center fade-up">
             <h2 class="font-script text-4xl text-stone-800">Rangkaian Acara</h2>
             
             <div class="bg-white p-6 rounded-2xl shadow-sm space-y-3">
@@ -94,32 +102,45 @@
                 <p class="text-xs text-stone-700 font-medium">Gedung Serbaguna Mawar, Bandung</p>
             </div>
 
-            <!-- Google Maps Embed -->
+            <!-- Google Maps -->
             <div class="w-full h-56 rounded-2xl overflow-hidden shadow-sm border border-stone-300">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7984!2d107.61!3d-6.9147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTQnNTIuOSJTIDEwN8KwMzYnMzYuMCJF!5e0!3m2!1sid!2sid!4v1!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
 
-            <a href="https://wa.me/6281234567890?text=Halo,%20saya%20akan%20hadir%20di%20acara%20pernikahan%20Romeo%20%26%20Juliet." target="_blank" class="block w-full bg-emerald-700 text-white font-semibold py-3 rounded-xl shadow hover:bg-emerald-800 transition">
-                Konfirmasi Kehadiran (RSVP WhatsApp)
+            <a href="https://wa.me/6281234567890?text=Halo,%20saya%20akan%20hadir%20di%20acara%20pernikahan%20Romeo%20%26%20Juliet." target="_blank" class="block w-full bg-emerald-700 text-white font-semibold py-3 rounded-xl shadow hover:bg-emerald-800 transition text-sm">
+                ✅ Konfirmasi Kehadiran (RSVP)
             </a>
         </section>
 
-        <!-- Buku Tamu / Ucapan Interaktif -->
-        <section class="py-12 px-6 bg-white space-y-6">
+        <!-- Amplop Digital / Kirim Kado -->
+        <section class="py-14 px-6 bg-white text-center space-y-6 fade-up">
+            <h3 class="font-script text-4xl text-stone-800">Amplop Digital</h3>
+            <p class="text-xs text-stone-500">Doa restu Anda adalah karunia terindah bagi kami. Namun jika ingin memberikan tanda kasih, dapat melalui:</p>
+            
+            <div class="bg-stone-50 p-5 rounded-2xl border border-stone-200 text-left space-y-2">
+                <p class="text-xs font-bold text-stone-700">BCA - Bank Central Asia</p>
+                <p class="text-sm font-mono font-semibold text-amber-900" id="rek-bca">1234567890</p>
+                <p class="text-[11px] text-stone-500">a.n. Romeo Pratama</p>
+                <button onclick="copyRek('rek-bca', this)" class="mt-2 w-full bg-stone-200 text-stone-800 py-1.5 rounded-lg text-xs font-semibold hover:bg-stone-300 transition">
+                    📋 Salin Nomor Rekening
+                </button>
+            </div>
+        </section>
+
+        <!-- Buku Tamu & Ucapan -->
+        <section id="wishes" class="py-14 px-6 bg-stone-100 space-y-6 fade-up">
             <h3 class="font-script text-4xl text-center text-stone-800">Buku Tamu & Ucapan</h3>
             
-            <!-- Form Input Ucapan -->
             <div class="space-y-4">
-                <input type="text" id="guest-name" placeholder="Nama Anda" class="w-full px-4 py-2 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-600">
-                <textarea id="guest-message" rows="3" placeholder="Tulis ucapan & doa restu..." class="w-full px-4 py-2 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-600"></textarea>
-                <button onclick="addComment()" class="w-full bg-amber-800 text-white font-semibold py-2 rounded-xl text-sm hover:bg-amber-900 transition">Kirim Ucapan</button>
+                <input type="text" id="guest-name" placeholder="Nama Anda" class="w-full px-4 py-2 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-600 bg-white">
+                <textarea id="guest-message" rows="3" placeholder="Tulis ucapan & doa restu..." class="w-full px-4 py-2 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-600 bg-white"></textarea>
+                <button onclick="addComment()" class="w-full bg-amber-800 text-white font-semibold py-2.5 rounded-xl text-sm hover:bg-amber-900 transition shadow">Kirim Ucapan</button>
             </div>
 
-            <!-- Daftar Ucapan -->
             <div id="comment-list" class="space-y-3 max-h-60 overflow-y-auto pr-1">
-                <div class="bg-stone-50 p-3 rounded-xl border border-stone-200 text-xs space-y-1">
+                <div class="bg-white p-3 rounded-xl border border-stone-200 text-xs space-y-1 shadow-sm">
                     <p class="font-bold text-amber-900">Andi Pratama</p>
-                    <p class="text-stone-600">Selamat menempuh hidup baru Romeo & Juliet! Semoga bahagia selalu sampai maut memisahkan.</p>
+                    <p class="text-stone-600">Selamat menempuh hidup baru Romeo & Juliet! Semoga bahagia selalu.</p>
                 </div>
             </div>
         </section>
@@ -130,10 +151,26 @@
             <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami.</p>
         </footer>
 
+        <!-- Bottom Navigation Bar (Menu Melayang) -->
+        <nav class="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 bg-stone-900/90 backdrop-blur border border-stone-700 px-6 py-2.5 rounded-full shadow-2xl flex gap-6 text-amber-100 text-lg">
+            <a href="#home" title="Home" class="hover:text-amber-300 transition">🏠</a>
+            <a href="#couple" title="Mempelai" class="hover:text-amber-300 transition">💍</a>
+            <a href="#event" title="Acara" class="hover:text-amber-300 transition">📅</a>
+            <a href="#wishes" title="Ucapan" class="hover:text-amber-300 transition">💌</a>
+        </nav>
+
     </div>
 
     <!-- Script Logika -->
     <script>
+        // Tangkap nama tamu dari URL (Contoh: namasitus.com/?to=Budi)
+        const urlParams = new URLSearchParams(window.location.search);
+        const recipient = urlParams.get('to');
+        if (recipient) {
+            document.getElementById('guest-name-preview').innerText = decodeURIComponent(recipient);
+            document.getElementById('guest-name').value = decodeURIComponent(recipient);
+        }
+
         const music = document.getElementById('bg-music');
         const musicBtn = document.getElementById('music-btn');
         let isPlaying = false;
@@ -169,6 +206,15 @@
             }
         }
 
+        // Fitur Salin Rekening
+        function copyRek(elementId, btn) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text);
+            const originalText = btn.innerText;
+            btn.innerText = "✅ Berhasil Disalin!";
+            setTimeout(() => { btn.innerText = originalText; }, 2000);
+        }
+
         // Countdown Timer
         const targetDate = new Date("Dec 12, 2026 08:00:00").getTime();
         setInterval(() => {
@@ -183,7 +229,7 @@
             }
         }, 1000);
 
-        // Tambah Ucapan Sederhana
+        // Tambah Ucapan
         function addComment() {
             const nameInput = document.getElementById('guest-name');
             const messageInput = document.getElementById('guest-message');
@@ -195,14 +241,24 @@
             }
 
             const newComment = document.createElement('div');
-            newComment.className = "bg-stone-50 p-3 rounded-xl border border-stone-200 text-xs space-y-1";
+            newComment.className = "bg-white p-3 rounded-xl border border-stone-200 text-xs space-y-1 shadow-sm";
             newComment.innerHTML = `<p class="font-bold text-amber-900">${nameInput.value}</p><p class="text-stone-600">${messageInput.value}</p>`;
             
             commentList.prepend(newComment);
-            
             nameInput.value = "";
             messageInput.value = "";
         }
+
+        // Efek Scroll Animasi Muncul
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
     </script>
 </body>
 </html>
