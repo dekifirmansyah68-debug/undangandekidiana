@@ -110,7 +110,7 @@
     <div id="main-content" class="max-w-md mx-auto min-h-screen shadow-2xl relative hidden pb-24 border-x border-amber-500/20 overflow-hidden">
         
         <!-- BACKGROUND GAMBAR + VIDEO KONTEN UTAMA -->
-        <div class="fixed inset-0 max-w-md mx-auto -z-20 pointer-events-none overflow-hidden bg-[url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000')] bg-cover bg-center">
+        <div class="fixed inset-0 max-w-md mx-auto -z-20 pointer-events-none overflow-hidden bg-[url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000')] bg-cover bg-center">
             <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-70">
                 <source src="deki.mp4" type="video/mp4">
             </video>
@@ -118,8 +118,8 @@
         </div>
 
         <audio id="bg-music" loop>
-    <source src="deki1.mp3" type="audio/mpeg">
-</audio>
+            <source src="deki1.mp3" type="audio/mpeg">
+        </audio>
 
         <button id="music-btn" onclick="toggleMusic()" class="fixed top-6 right-6 z-40 bg-slate-900/90 backdrop-blur text-amber-200 p-2.5 rounded-full shadow-lg border border-amber-500/40 hover:scale-110 transition hidden">
             🎵
@@ -143,7 +143,6 @@
                 <div class="flex items-center justify-center gap-2 w-full my-1">
                     <div class="w-10 h-[1px] bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
                     <div class="w-1.5 h-1.5 rotate-45 bg-amber-300"></div>
-                   
                 </div>
 
                 <p class="font-serif-title text-xs tracking-[0.25em] text-slate-200 font-semibold">06 September 2026</p>
@@ -190,12 +189,12 @@
                 </p>
                 <div class="space-y-1">
                     <h3 class="font-script text-3xl sm:text-4xl text-amber-300">Deki Firmansyah, S.Pd</h3>
-                    <p class="text-xs text-slate-300">Putra Kedua Dari Bpk. Dede Rohmat & Ibu Sri Kurniasih</p>
+                    <p class="text-xs text-slate-300">Putra Kedua Dari Bpk. Dede Rohmat &amp; Ibu Sri Kurniasih</p>
                 </div>
-                <div class="font-script text-3xl text-amber-400/80">&</div>
+                <div class="font-script text-3xl text-amber-400/80">&amp;</div>
                 <div class="space-y-1">
                     <h3 class="font-script text-3xl sm:text-4xl text-amber-300">Diana Patmawati, S.Pd</h3>
-                    <p class="text-xs text-slate-300">Putri Pertama dari Bpk. Wawan Gunawan & Ibu Nunung Soniangsih</p>
+                    <p class="text-xs text-slate-300">Putri Pertama dari Bpk. Wawan Gunawan &amp; Ibu Nunung Soniangsih</p>
                 </div>
             </div>
         </section>
@@ -261,7 +260,7 @@
             <div class="bg-slate-900/80 backdrop-blur-md p-6 rounded-2xl border border-amber-400/30 text-left space-y-5 shadow-xl">
                 <p class="text-xs text-slate-300 leading-relaxed text-center">Doa restu Anda adalah karunia terindah bagi kami. Namun jika ingin memberikan tanda kasih, dapat melalui:</p>
                 
-                <!-- BANK BCA -->
+                <!-- BANK BJB -->
                 <div class="border-t border-amber-300/20 pt-4 space-y-1">
                     <div class="flex items-center justify-between">
                         <p class="text-xs font-bold text-amber-300 tracking-wide uppercase">BJB - Bank Jabar Banten</p>
@@ -269,7 +268,7 @@
                     </div>
                     <p class="text-base font-mono font-semibold text-white tracking-wider my-1" id="rek-BJB">0158361221110</p>
                     <p class="text-[11px] text-slate-300">a.n. Diana Patmawati</p>
-                    <button onclick="copyRek('rek-bca', this)" class="mt-2 w-full bg-amber-400/20 text-amber-200 border border-amber-300/40 py-2 rounded-lg text-xs font-semibold hover:bg-amber-400/30 transition">
+                    <button onclick="copyRek('rek-BJB', this)" class="mt-2 w-full bg-amber-400/20 text-amber-200 border border-amber-300/40 py-2 rounded-lg text-xs font-semibold hover:bg-amber-400/30 transition">
                         📋 Salin Nomor Rekening
                     </button>
                 </div>
@@ -291,7 +290,7 @@
 
         <!-- BUKU TAMU & KONFIRMASI KEHADIRAN -->
         <section id="wishes" class="py-14 px-6 space-y-6 fade-up">
-            <h3 class="font-script text-4xl text-center text-amber-200 drop-shadow">Buku Tamu & RSVP</h3>
+            <h3 class="font-script text-4xl text-center text-amber-200 drop-shadow">Buku Tamu &amp; RSVP</h3>
             
             <div class="bg-slate-900/80 backdrop-blur-md p-6 rounded-2xl border border-amber-400/30 shadow-xl space-y-4">
                 <div class="space-y-3">
@@ -303,9 +302,9 @@
                         <option value="Tidak Hadir" class="bg-slate-900 text-rose-400 font-bold">✕ Tidak Hadir</option>
                     </select>
 
-                    <textarea id="guest-message" rows="3" placeholder="Tulis ucapan & doa restu..." class="w-full px-4 py-2.5 border border-slate-700/80 rounded-xl text-xs focus:outline-none focus:border-amber-400 bg-slate-800/80 text-white placeholder-slate-400"></textarea>
+                    <textarea id="guest-message" rows="3" placeholder="Tulis ucapan &amp; doa restu..." class="w-full px-4 py-2.5 border border-slate-700/80 rounded-xl text-xs focus:outline-none focus:border-amber-400 bg-slate-800/80 text-white placeholder-slate-400"></textarea>
                     
-                    <button onclick="addComment()" class="w-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 text-slate-950 font-bold py-2.5 rounded-xl text-xs hover:opacity-90 transition shadow-lg">Kirim Konfirmasi & Ucapan</button>
+                    <button onclick="addComment()" class="w-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 text-slate-950 font-bold py-2.5 rounded-xl text-xs hover:opacity-90 transition shadow-lg">Kirim Konfirmasi &amp; Ucapan</button>
                 </div>
 
                 <!-- DAFTAR UCAPAN & BADGE KEHADIRAN -->
@@ -315,7 +314,7 @@
                             <p class="font-bold text-amber-300">Keluarga Besar</p>
                             <span class="text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-2 py-0.5 rounded-full font-semibold">✓ Hadir</span>
                         </div>
-                        <p class="text-slate-200 pt-1">Selamat menempuh hidup baru Deki & Diana! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah.</p>
+                        <p class="text-slate-200 pt-1">Selamat menempuh hidup baru Deki &amp; Diana! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah.</p>
                     </div>
                 </div>
             </div>
@@ -381,12 +380,40 @@
             }
         }
 
+        /* FUNGSI SALIN DENGAN FALLBACK UNTUK SEMUA HP/BROWSER */
         function copyRek(elementId, btn) {
-            const text = document.getElementById(elementId).innerText;
-            navigator.clipboard.writeText(text);
-            const originalText = btn.innerText;
-            btn.innerText = "✅ Berhasil Disalin!";
-            setTimeout(() => { btn.innerText = originalText; }, 2000);
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            const text = el.innerText.trim();
+
+            const showSuccess = () => {
+                const originalText = btn.innerText;
+                btn.innerText = "✅ Berhasil Disalin!";
+                setTimeout(() => { btn.innerText = originalText; }, 2000);
+            };
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(showSuccess).catch(() => fallbackCopy(text, showSuccess));
+            } else {
+                fallbackCopy(text, showSuccess);
+            }
+        }
+
+        function fallbackCopy(text, callback) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                callback();
+            } catch (err) {
+                alert('Nomor Rekening: ' + text);
+            }
+            document.body.removeChild(textarea);
         }
 
         function addComment() {
