@@ -7,7 +7,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .font-script { font-family: 'Great Vibes', cursive; }
@@ -63,12 +63,10 @@
             <video autoplay loop muted playsinline class="w-full h-full object-cover">
                 <source src="cover-bg.mp4" type="video/mp4">
             </video>
-            <!-- Diperterang: Opacity overlay dikurangi ke 30% -->
             <div class="absolute inset-0 bg-slate-950/30"></div>
         </div>
 
         <div class="gunungan-frame bg-slate-950/75 backdrop-blur-md p-8 md:p-10 border-2 border-amber-400/60 glow-card max-w-md w-full flex flex-col items-center animate-gunungan-float relative">
-            <!-- Ornamen Atas -->
             <div class="text-amber-300/80 text-xl mb-2">✦ ✤ ✦</div>
             
             <p class="font-serif-title text-[11px] tracking-[0.35em] uppercase text-amber-200/90 font-medium">The Wedding Of</p>
@@ -98,12 +96,10 @@
     <!-- ========================================== -->
     <div id="main-content" class="max-w-md mx-auto min-h-screen shadow-2xl relative hidden pb-24 border-x border-amber-500/20 overflow-hidden">
         
-        <!-- VIDEO BACKGROUND KONTEN UTAMA -->
         <div class="fixed inset-0 max-w-md mx-auto -z-20 pointer-events-none overflow-hidden">
             <video autoplay loop muted playsinline class="w-full h-full object-cover">
                 <source src="deki.mp4" type="video/mp4">
             </video>
-            <!-- Diperterang: Opacity gradient dikurangi agar video terlihat jelas -->
             <div class="absolute inset-0 bg-gradient-to-b from-slate-950/30 via-slate-950/40 to-slate-950/60"></div>
         </div>
 
@@ -115,16 +111,11 @@
             🎵
         </button>
 
-        <!-- HERO SECTION (TAMPILAN MEWAH) -->
+        <!-- HERO SECTION -->
         <header id="home" class="relative min-h-screen flex flex-col justify-center items-center p-5 text-center text-white overflow-hidden">
-            
-            <!-- Card Utama Gunungan -->
             <div id="hero-card" class="relative gunungan-frame w-full max-w-xs p-7 bg-slate-950/75 backdrop-blur-md border-2 border-amber-400/60 glow-card shadow-2xl flex flex-col items-center space-y-4 my-auto animate-gunungan-float">
-                
-                <!-- Inner Border untuk Efek Mewah Berlapis -->
                 <div class="absolute inset-2 gunungan-frame border border-amber-300/20 pointer-events-none"></div>
 
-                <!-- Mahkota Ornamen Atas -->
                 <div class="flex items-center gap-2 text-amber-300/80 text-xs tracking-widest pt-1">
                     <span>✦</span> <span>❖</span> <span>✦</span>
                 </div>
@@ -133,7 +124,6 @@
                 
                 <h2 class="font-script text-5xl gold-shimmer drop-shadow-md py-1">Deki & Diana</h2>
 
-                <!-- Garis Pembatas Estetik -->
                 <div class="flex items-center justify-center gap-2 w-full my-1">
                     <div class="w-10 h-[1px] bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
                     <div class="w-1.5 h-1.5 rotate-45 bg-amber-300"></div>
@@ -142,7 +132,7 @@
 
                 <p class="font-serif-title text-xs tracking-[0.25em] text-slate-200 font-semibold">06 . 09 . 2026</p>
 
-                <!-- HITUNG MUNDUR / COUNTDOWN TIMER -->
+                <!-- COUNTDOWN TIMER -->
                 <div class="w-full pt-2">
                     <p class="text-[10px] text-amber-200/80 uppercase tracking-widest mb-2 font-medium">Menuju Hari Bahagia</p>
                     <div id="countdown" class="grid grid-cols-4 gap-1.5 text-center">
@@ -194,60 +184,90 @@
             </div>
         </section>
 
-        <!-- RANGKAIAN ACARA & LOKASI (QR CODE) -->
+        <!-- RANGKAIAN ACARA (DESAIN BARU MEWAH & KEREN) -->
         <section id="event" class="py-14 px-6 space-y-6 text-center fade-up">
             <h2 class="font-script text-4xl text-amber-200 drop-shadow">Rangkaian Acara</h2>
             
-            <div class="space-y-4">
-                <div class="bg-slate-900/75 backdrop-blur-md border border-amber-400/30 p-5 rounded-2xl shadow-xl space-y-2">
-                    <div class="w-8 h-8 mx-auto rounded-full bg-amber-400/10 border border-amber-300/40 flex items-center justify-center text-amber-300 text-xs">
+            <div class="space-y-5">
+                <!-- AKAD NIKAH CARD -->
+                <div class="bg-slate-900/80 backdrop-blur-md border border-amber-400/40 p-6 rounded-3xl shadow-xl space-y-3 relative overflow-hidden glow-card">
+                    <div class="w-10 h-10 mx-auto rounded-full bg-amber-400/10 border border-amber-300/40 flex items-center justify-center text-amber-300 text-sm shadow-inner">
                         💍
                     </div>
-                    <h4 class="font-bold text-amber-300 tracking-wide text-xs uppercase">Akad Nikah</h4>
-                    <p class="text-xs text-slate-200">Minggu, 06 September 2026</p>
-                    <p class="text-xs text-amber-200 font-semibold">Pukul 08.00 - 10.00 WIB</p>
-                    <p class="text-xs text-slate-300 pt-1">Gedung / Lokasi Akad</p>
+                    <div>
+                        <span class="text-[9px] tracking-[0.35em] uppercase text-amber-300/80 font-serif-title block mb-1">The Sacred Ceremony</span>
+                        <h4 class="font-serif-title text-2xl font-bold tracking-[0.15em] uppercase gold-shimmer">Akad Nikah</h4>
+                    </div>
+                    <div class="w-16 h-[1px] bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto"></div>
+                    <p class="text-xs text-slate-200 font-medium">Minggu, 06 September 2026</p>
+                    <div class="inline-block bg-amber-400/10 border border-amber-400/30 px-4 py-1 rounded-full">
+                        <p class="text-xs text-amber-300 font-semibold tracking-wider">Pukul 08.00 - 10.00 WIB</p>
+                    </div>
+                    <p class="text-xs text-slate-300 italic pt-1">Gedung / Lokasi Akad</p>
                 </div>
 
-                <div class="bg-slate-900/75 backdrop-blur-md border border-amber-400/30 p-5 rounded-2xl shadow-xl space-y-2">
-                    <div class="w-8 h-8 mx-auto rounded-full bg-amber-400/10 border border-amber-300/40 flex items-center justify-center text-amber-300 text-xs">
+                <!-- RESEPSI PERNIKAHAN CARD -->
+                <div class="bg-slate-900/80 backdrop-blur-md border border-amber-400/40 p-6 rounded-3xl shadow-xl space-y-3 relative overflow-hidden glow-card">
+                    <div class="w-10 h-10 mx-auto rounded-full bg-amber-400/10 border border-amber-300/40 flex items-center justify-center text-amber-300 text-sm shadow-inner">
                         ✨
                     </div>
-                    <h4 class="font-bold text-amber-300 tracking-wide text-xs uppercase">Resepsi Pernikahan</h4>
-                    <p class="text-xs text-slate-200">Minggu, 06 September 2026</p>
-                    <p class="text-xs text-amber-200 font-semibold">Pukul 11.00 WIB - Selesai</p>
-                    <p class="text-xs text-slate-300 pt-1">Gedung / Lokasi Resepsi</p>
+                    <div>
+                        <span class="text-[9px] tracking-[0.35em] uppercase text-amber-300/80 font-serif-title block mb-1">The Celebration</span>
+                        <h4 class="font-serif-title text-2xl font-bold tracking-[0.15em] uppercase gold-shimmer">Resepsi Pernikahan</h4>
+                    </div>
+                    <div class="w-16 h-[1px] bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto"></div>
+                    <p class="text-xs text-slate-200 font-medium">Minggu, 06 September 2026</p>
+                    <div class="inline-block bg-amber-400/10 border border-amber-400/30 px-4 py-1 rounded-full">
+                        <p class="text-xs text-amber-300 font-semibold tracking-wider">Pukul 11.00 WIB - Selesai</p>
+                    </div>
+                    <p class="text-xs text-slate-300 italic pt-1">Gedung / Lokasi Resepsi</p>
                 </div>
             </div>
 
-            <!-- BAGIAN LOKASI MAPS (BARCODE & TOMBOL) -->
+            <!-- MAPS & QR CODE -->
             <div class="bg-slate-900/75 backdrop-blur-md border border-amber-400/30 p-6 rounded-2xl shadow-xl flex flex-col items-center space-y-4">
                 <p class="text-xs text-amber-200 font-medium">Scan Barcode / QR Code untuk Petunjuk Lokasi:</p>
                 
-                <!-- Gambar QR Code (Ganti parameter URL 'data' dengan link titik lokasi Google Maps asli) -->
                 <div class="p-3 bg-white rounded-2xl shadow-md border-2 border-amber-400/50">
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://maps.google.com" alt="QR Code Lokasi" class="w-36 h-36">
                 </div>
 
-                <!-- Tombol Direct Link Google Maps -->
                 <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 text-slate-950 font-bold py-3 px-4 rounded-xl text-xs hover:brightness-110 transition shadow-lg flex items-center justify-center gap-2">
                     📍 Buka Lokasi di Google Maps
                 </a>
             </div>
         </section>
 
-        <!-- AMPLOP DIGITAL -->
+        <!-- AMPLOP DIGITAL (DENGAN TAMBAHAN DANA) -->
         <section class="py-14 px-6 text-center space-y-6 fade-up">
             <h3 class="font-script text-4xl text-amber-200 drop-shadow">Amplop Digital</h3>
             
-            <div class="bg-slate-900/75 backdrop-blur-md p-6 rounded-2xl border border-amber-400/30 text-left space-y-3 shadow-xl">
-                <p class="text-xs text-slate-300 leading-relaxed">Doa restu Anda adalah karunia terindah bagi kami. Namun jika ingin memberikan tanda kasih, dapat melalui:</p>
-                <div class="border-t border-amber-300/20 pt-3">
-                    <p class="text-xs font-bold text-amber-300">BCA - Bank Central Asia</p>
+            <div class="bg-slate-900/75 backdrop-blur-md p-6 rounded-2xl border border-amber-400/30 text-left space-y-5 shadow-xl">
+                <p class="text-xs text-slate-300 leading-relaxed text-center">Doa restu Anda adalah karunia terindah bagi kami. Namun jika ingin memberikan tanda kasih, dapat melalui:</p>
+                
+                <!-- BANK BCA -->
+                <div class="border-t border-amber-300/20 pt-4 space-y-1">
+                    <div class="flex items-center justify-between">
+                        <p class="text-xs font-bold text-amber-300 tracking-wide uppercase">BCA - Bank Central Asia</p>
+                        <span class="text-[9px] bg-amber-400/10 text-amber-300 border border-amber-400/30 px-2 py-0.5 rounded font-mono font-bold">BANK</span>
+                    </div>
                     <p class="text-base font-mono font-semibold text-white tracking-wider my-1" id="rek-bca">1234567890</p>
                     <p class="text-[11px] text-slate-300">a.n. Deki Firmansyah</p>
-                    <button onclick="copyRek('rek-bca', this)" class="mt-3 w-full bg-amber-400/20 text-amber-200 border border-amber-300/40 py-2.5 rounded-lg text-xs font-semibold hover:bg-amber-400/30 transition">
+                    <button onclick="copyRek('rek-bca', this)" class="mt-2 w-full bg-amber-400/20 text-amber-200 border border-amber-300/40 py-2 rounded-lg text-xs font-semibold hover:bg-amber-400/30 transition">
                         📋 Salin Nomor Rekening
+                    </button>
+                </div>
+
+                <!-- E-WALLET DANA -->
+                <div class="border-t border-amber-300/20 pt-4 space-y-1">
+                    <div class="flex items-center justify-between">
+                        <p class="text-xs font-bold text-sky-400 tracking-wide uppercase">DANA - E-Wallet</p>
+                        <span class="text-[9px] bg-sky-500/20 text-sky-300 border border-sky-400/30 px-2 py-0.5 rounded font-mono font-bold">E-WALLET</span>
+                    </div>
+                    <p class="text-base font-mono font-semibold text-white tracking-wider my-1" id="rek-dana">081234567890</p>
+                    <p class="text-[11px] text-slate-300">a.n. Diana Patmawati</p>
+                    <button onclick="copyRek('rek-dana', this)" class="mt-2 w-full bg-sky-400/20 text-sky-200 border border-sky-300/40 py-2 rounded-lg text-xs font-semibold hover:bg-sky-400/30 transition">
+                        📋 Salin Nomor DANA
                     </button>
                 </div>
             </div>
@@ -360,7 +380,7 @@
             messageInput.value = "";
         }
 
-        // SCRIPT HITUNG MUNDUR (COUNTDOWN)
+        // COUNTDOWN TIMER
         const targetDate = new Date("Sep 6, 2026 08:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
