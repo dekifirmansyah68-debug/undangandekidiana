@@ -44,17 +44,16 @@
 <body class="bg-slate-950 text-slate-800 antialiased overflow-x-hidden">
 
     <!-- ========================================== -->
-    <!-- 1. HALAMAN SAMPUL / COVER DEPAN (BERBEDA) -->
+    <!-- 1. HALAMAN SAMPUL / COVER DEPAN -->
     <!-- ========================================== -->
     <div id="cover-section" class="fixed inset-0 z-50 flex flex-col items-center justify-center text-center text-white p-6 transition-all duration-1000 ease-in-out overflow-hidden">
         
-        <!-- VIDEO BACKGROUND 1: KHUSUS COVER DEPAN (Pemandangan Gunung/Awan) -->
+        <!-- VIDEO BACKGROUND 1: COVER DEPAN -->
         <div class="absolute inset-0 -z-10 overflow-hidden">
             <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                <!-- Ubah link di bawah jika ingin ganti video cover depan -->
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-timelapse-of-clouds-over-mountains-28434-large.mp4" type="video/mp4">
+                <!-- Samakan dengan nama file video cover di GitHub Anda -->
+                <source src="cover-bg.mp4" type="video/mp4">
             </video>
-            <!-- Overlay gelap agar teks tetap terbaca -->
             <div class="absolute inset-0 bg-slate-950/70"></div>
         </div>
 
@@ -84,17 +83,16 @@
 
 
     <!-- ========================================== -->
-    <!-- 2. KONTEN UTAMA UNDANGAN (BERBEDA) -->
+    <!-- 2. KONTEN UTAMA UNDANGAN -->
     <!-- ========================================== -->
     <div id="main-content" class="max-w-md mx-auto min-h-screen shadow-2xl relative hidden pb-24 border-x border-amber-500/20 overflow-hidden">
         
-        <!-- VIDEO BACKGROUND 2: KHUSUS KONTEN UTAMA (Air Terjun) -->
+        <!-- VIDEO BACKGROUND 2: KONTEN UTAMA -->
         <div class="fixed inset-0 max-w-md mx-auto -z-20 pointer-events-none overflow-hidden">
             <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                <!-- Ubah link di bawah jika ingin ganti video isi utama -->
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-waterfall-in-forest-2213-large.mp4" type="video/mp4">
+                <!-- Samakan dengan nama file video utama di GitHub Anda -->
+                <source src="main-bg.mp4" type="video/mp4">
             </video>
-            <!-- Overlay gradasi gelap -->
             <div class="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/85 to-slate-950/90"></div>
         </div>
 
@@ -187,10 +185,6 @@
             <div class="w-full h-56 rounded-2xl overflow-hidden shadow-2xl border border-amber-300/30">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7984!2d107.61!3d-6.9147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTQnNTIuOSJTIDEwN8KwMzYnMzYuMCJF!5e0!3m2!1sid!2sid!4v1!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-
-            <a href="https://wa.me/6281234567890?text=Halo,%20saya%20akan%20hadir%20di%20acara%20pernikahan%20Deki%20%26%20Diana." target="_blank" class="block w-full bg-emerald-600/90 hover:bg-emerald-600 text-white font-semibold py-3 rounded-xl shadow-lg transition text-xs border border-emerald-400/30">
-                ✅ Konfirmasi Kehadiran (RSVP WhatsApp)
-            </a>
         </section>
 
         <!-- AMPLOP DIGITAL -->
@@ -262,7 +256,6 @@
             const cover = document.getElementById('cover-section');
             const mainContent = document.getElementById('main-content');
 
-            // Efek slide up saat tombol Buka Undangan diklik
             cover.style.transform = 'translateY(-100%)';
             
             setTimeout(() => {
@@ -282,7 +275,7 @@
         function toggleMusic() {
             if (isPlaying) {
                 music.pause();
-                musicBtn.innerText = '0x1F507';
+                musicBtn.innerText = '🔇';
                 isPlaying = false;
             } else {
                 music.play();
