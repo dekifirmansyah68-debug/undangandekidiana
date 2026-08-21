@@ -81,7 +81,6 @@
             
             <p class="font-serif-title text-[10px] sm:text-[11px] tracking-[0.35em] uppercase text-amber-200/90 font-medium">The Wedding Of</p>
             
-            <!-- CONTAINER FONT script DENGAN UKURAN LEBIH PAS & PADDING LEBIH BEBAS -->
             <div class="w-full px-2 py-2 my-1 overflow-visible text-center">
                 <h1 class="font-script text-3xl sm:text-4xl md:text-5xl gold-shimmer drop-shadow-lg inline-block whitespace-nowrap">Deki &amp; Diana</h1>
             </div>
@@ -290,21 +289,33 @@
             </div>
         </section>
 
-        <!-- BUKU TAMU -->
+        <!-- BUKU TAMU & KONFIRMASI KEHADIRAN -->
         <section id="wishes" class="py-14 px-6 space-y-6 fade-up">
-            <h3 class="font-script text-4xl text-center text-amber-200 drop-shadow">Buku Tamu & Ucapan</h3>
+            <h3 class="font-script text-4xl text-center text-amber-200 drop-shadow">Buku Tamu & RSVP</h3>
             
             <div class="bg-slate-900/80 backdrop-blur-md p-6 rounded-2xl border border-amber-400/30 shadow-xl space-y-4">
                 <div class="space-y-3">
                     <input type="text" id="guest-name" placeholder="Nama Anda" class="w-full px-4 py-2.5 border border-slate-700/80 rounded-xl text-xs focus:outline-none focus:border-amber-400 bg-slate-800/80 text-white placeholder-slate-400">
+                    
+                    <!-- DROPDOWN KONFIRMASI KEHADIRAN -->
+                    <select id="guest-status" class="w-full px-4 py-2.5 border border-slate-700/80 rounded-xl text-xs focus:outline-none focus:border-amber-400 bg-slate-800/80 text-amber-300 font-medium">
+                        <option value="Hadir" class="bg-slate-900 text-emerald-400 font-bold">✓ Hadir</option>
+                        <option value="Tidak Hadir" class="bg-slate-900 text-rose-400 font-bold">✕ Tidak Hadir</option>
+                    </select>
+
                     <textarea id="guest-message" rows="3" placeholder="Tulis ucapan & doa restu..." class="w-full px-4 py-2.5 border border-slate-700/80 rounded-xl text-xs focus:outline-none focus:border-amber-400 bg-slate-800/80 text-white placeholder-slate-400"></textarea>
-                    <button onclick="addComment()" class="w-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 text-slate-950 font-bold py-2.5 rounded-xl text-xs hover:opacity-90 transition shadow-lg">Kirim Ucapan</button>
+                    
+                    <button onclick="addComment()" class="w-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 text-slate-950 font-bold py-2.5 rounded-xl text-xs hover:opacity-90 transition shadow-lg">Kirim Konfirmasi & Ucapan</button>
                 </div>
 
+                <!-- DAFTAR UCAPAN & BADGE KEHADIRAN -->
                 <div id="comment-list" class="space-y-3 max-h-60 overflow-y-auto pr-1 pt-2">
                     <div class="bg-slate-800/90 p-3 rounded-xl border border-slate-700/60 text-xs space-y-1 shadow-sm">
-                        <p class="font-bold text-amber-300">Keluarga Besar</p>
-                        <p class="text-slate-200">Selamat menempuh hidup baru Deki & Diana! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah.</p>
+                        <div class="flex items-center justify-between">
+                            <p class="font-bold text-amber-300">Keluarga Besar</p>
+                            <span class="text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-2 py-0.5 rounded-full font-semibold">✓ Hadir</span>
+                        </div>
+                        <p class="text-slate-200 pt-1">Selamat menempuh hidup baru Deki & Diana! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah.</p>
                     </div>
                 </div>
             </div>
@@ -380,6 +391,7 @@
 
         function addComment() {
             const nameInput = document.getElementById('guest-name');
+            const statusInput = document.getElementById('guest-status');
             const messageInput = document.getElementById('guest-message');
             const commentList = document.getElementById('comment-list');
 
@@ -388,9 +400,24 @@
                 return;
             }
 
+            const status = statusInput.value;
+            let statusBadge = '';
+            
+            if (status === 'Hadir') {
+                statusBadge = `<span class="text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-2 py-0.5 rounded-full font-semibold">✓ Hadir</span>`;
+            } else {
+                statusBadge = `<span class="text-[10px] bg-rose-500/20 text-rose-400 border border-rose-500/40 px-2 py-0.5 rounded-full font-semibold">✕ Tidak Hadir</span>`;
+            }
+
             const newComment = document.createElement('div');
             newComment.className = "bg-slate-800/90 p-3 rounded-xl border border-slate-700/60 text-xs space-y-1 shadow-sm";
-            newComment.innerHTML = `<p class="font-bold text-amber-300">${nameInput.value}</p><p class="text-slate-200">${messageInput.value}</p>`;
+            newComment.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <p class="font-bold text-amber-300">${nameInput.value}</p>
+                    ${statusBadge}
+                </div>
+                <p class="text-slate-200 pt-1">${messageInput.value}</p>
+            `;
             
             commentList.prepend(newComment);
             nameInput.value = "";
